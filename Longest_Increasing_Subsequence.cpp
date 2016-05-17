@@ -13,12 +13,16 @@ int main()
     }
     int dp[size];
     fill_n(dp,size,1);
+    for(int i=0;i<size;i++)
+    {
+        cout<<"dp"<<i<<"="<<dp[i]<<endl;
+    }
     int max=dp[0];
     for(int i=1;i<size;i++)
     {
         for(int j=0;j<i;j++)
         {
-            if(arr[i]<=arr[j])
+            if(arr[i]>=arr[j])
             {
                 if(dp[i]<=dp[j])
                 {
@@ -28,12 +32,13 @@ int main()
         }
     }
 
-    for(int i=1;i<size;i++)
+    for(int i=0;i<size;i++)
     {
         if(max<dp[i])
         {
             max=dp[i];
         }
+        //cout<<dp[i];
     }
-    cout<<dp[size-1];
+    cout<<max;
 }
